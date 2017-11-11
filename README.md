@@ -1,5 +1,5 @@
 # Catch of the Day
-Fish store built in React.js
+Seafood market built in React.js
 
 A real-time app for a trendy seafood market where price and quantity available are variable and can change at a moment's notice. We have a menu, order form, and inventory management area where authorized users can immediately update product details.
 
