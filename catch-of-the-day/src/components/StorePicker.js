@@ -9,9 +9,13 @@ class StorePicker extends React.Component {
   goToStore(event) {
     event.preventDefault(); // stop page from reloading
     console.log("You changed the URL");
+
     // grab text from textbox
-    console.log(this.storeInput.value);
+    const storeId = this.storeInput.value;
+    console.log(`Going to ${storeId}`);
+
     // change route from / to /store/:storeId
+    this.context.router.transitionTo(`/store/${storeId}`);
   }
 
   render() {  //render() is bound to the component
@@ -30,6 +34,10 @@ class StorePicker extends React.Component {
       </form>
     )
   }
+}
+
+StorePicker.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default StorePicker;
