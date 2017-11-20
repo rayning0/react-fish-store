@@ -10,6 +10,7 @@ class App extends React.Component {
     super();
     this.addFish = this.addFish.bind(this); //makes addFish() a method on App
     this.loadSamples = this.loadSamples.bind(this);
+    this.addToOrder = this.addToOrder.bind(this);
 
     // getinitialState
     this.state = {
@@ -21,8 +22,11 @@ class App extends React.Component {
   addFish(fish) {
     // update state
     //   this.state.fishes.fish1 = fish; <--can do this, but don't
-    //   Spread Attributes: if you have props as an object and want to pass it in JSX, you can use ... as a “spread” operator to pass whole props object.
-    const fishes = {...this.state.fishes}; //copy existing state into "fishes"
+    // Spread Attributes: if you have props as an object and want to pass it in JSX,
+    // use ... as “spread” operator to pass whole props object.
+
+    //copy existing state into "fishes"
+    const fishes = {...this.state.fishes};
 
     // add our new fish
     const timestamp = Date.now(); // ms since the UNIX epoch (1/1/1970)
@@ -39,6 +43,12 @@ class App extends React.Component {
     });
   }
 
+  addToOrder(key) {
+    const order = {...this.state.order};
+    order[key] = order[key] + 1 || 1; // # of orders of a specific fish
+    this.setState({ order });
+  }
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -47,7 +57,7 @@ class App extends React.Component {
           <ul className="list-of-fishes">
             {
               Object.keys(this.state.fishes)
-                    .map(key => <Fish key={key} details={this.state.fishes[key]} />)
+                    .map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />) //index is for you. key is for React.
             }
           </ul>
         </div>
