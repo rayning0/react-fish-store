@@ -11,8 +11,10 @@ class App extends React.Component {
     super();
     this.addFish = this.addFish.bind(this); //makes addFish() a method on App
     this.updateFish = this.updateFish.bind(this);
+    this.removeFish = this.removeFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.removeFromOrder = this.removeFromOrder.bind(this);
 
     // getinitialState
     this.state = {
@@ -71,6 +73,12 @@ class App extends React.Component {
     this.setState({ fishes });
   }
 
+  removeFish(key) {
+    const fishes = {...this.state.fishes};
+    fishes[key] = null;
+    this.setState({ fishes });
+  }
+
   loadSamples() {
     this.setState({
       fishes: sampleFishes
@@ -80,6 +88,12 @@ class App extends React.Component {
   addToOrder(key) {
     const order = {...this.state.order};
     order[key] = order[key] + 1 || 1; // # of orders of a specific fish
+    this.setState({ order });
+  }
+
+  removeFromOrder(key) {
+    const order = {...this.state.order};
+    delete order[key];
     this.setState({ order });
   }
 
@@ -99,10 +113,12 @@ class App extends React.Component {
           fishes={this.state.fishes}
           order={this.state.order}
           params={this.props.params}
+          removeFromOrder={this.removeFromOrder}
         />
       { /* pass addFish(), loadSamples(), etc. to Inventory */ }
         <Inventory
           addFish={this.addFish}
+          removeFish={this.removeFish}
           loadSamples={this.loadSamples}
           fishes={this.state.fishes}
           updateFish={this.updateFish}
