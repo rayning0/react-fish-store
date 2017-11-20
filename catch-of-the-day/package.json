@@ -2,6 +2,7 @@
   "name": "cotd",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://rayning0.github.io/catch-of-the-day/",
   "devDependencies": {
     "autoprefixer-stylus": "0.10.0",
     "babel-eslint": "^7.1.1",

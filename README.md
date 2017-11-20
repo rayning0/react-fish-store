@@ -1,7 +1,9 @@
-# Catch of the Day
+# Working site: [Catch of the Day](https://rayning0.github.io/catch-of-the-day/)
 Seafood market built in React.js
 
 A real-time app for a trendy seafood market where price and quantity available are variable and can change at a moment's notice. We have a menu, order form, and inventory management area where authorized users can immediately update product details.
+
+See [all code](https://github.com/rayning0/react-fish-store/tree/master/catch-of-the-day/src).
 
 See [all React components](https://github.com/rayning0/react-fish-store/tree/master/catch-of-the-day/src/components).
 
