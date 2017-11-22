@@ -18,6 +18,10 @@ const Header = (props) => {
   )
 }
 
+Header.propTypes = {
+  tagline: React.PropTypes.string
+};
+
 // This means same as:
 
 // function Header() {...}
