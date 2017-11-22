@@ -9,10 +9,15 @@ import base from '../base';
 class App extends React.Component {
   constructor() {
     super();
+
+    //For updateFish, removeFish, loadSamples we try experimental ES6 feature:
+    //Property Initializers, so no need for lines 18-20:
+    // https://www.fullstackreact.com/articles/use-property-initializers-for-cleaner-react-components/
+
     this.addFish = this.addFish.bind(this); //makes addFish() a method on App
-    this.updateFish = this.updateFish.bind(this);
-    this.removeFish = this.removeFish.bind(this);
-    this.loadSamples = this.loadSamples.bind(this);
+    // this.updateFish = this.updateFish.bind(this);
+    // this.removeFish = this.removeFish.bind(this);
+    // this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
     this.removeFromOrder = this.removeFromOrder.bind(this);
 
@@ -22,6 +27,12 @@ class App extends React.Component {
       order: {}
     };
   }
+
+// Instead of lines 25-28, we may do this outside constructor:
+  // state = {
+  //   fishes: {},
+  //   order: {}
+  // }
 
   componentWillMount() {
     // runs right before app is rendered
@@ -67,23 +78,24 @@ class App extends React.Component {
     // this.setState({ fishes: fishes });
   }
 
-  updateFish(key, updatedFish) {
+  updateFish = (key, updatedFish) => {
     const fishes = {...this.state.fishes};
     fishes[key] = updatedFish;
     this.setState({ fishes });
-  }
+  };
 
-  removeFish(key) {
+  removeFish = (key) => {
     const fishes = {...this.state.fishes};
     fishes[key] = null;
     this.setState({ fishes });
-  }
+  };
 
-  loadSamples() {
+  // loadSamples = function() {  OR
+  loadSamples = () => { // arrow function makes loadSamples bound to parent App
     this.setState({
       fishes: sampleFishes
     });
-  }
+  };
 
   addToOrder(key) {
     const order = {...this.state.order};
