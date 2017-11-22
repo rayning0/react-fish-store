@@ -3,6 +3,8 @@ Seafood market built in React.js
 
 A real-time app for a trendy seafood market where price and quantity available are variable and can change at a moment's notice. We have a menu, order form, and inventory management area where authorized users can immediately add/edit/delete fish and customer orders.
 
+To change fish inventory, require OAuth2 login with Google, GitHub, Facebook, or Twitter.
+
 See [all code](https://github.com/rayning0/react-fish-store/tree/master/catch-of-the-day/src).
 
 See [all React components](https://github.com/rayning0/react-fish-store/tree/master/catch-of-the-day/src/components).
